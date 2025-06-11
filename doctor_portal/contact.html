@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Doctor Contact Portal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-form input {
+      margin-bottom: 15px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .contact-form button {
+      background-color: #007bff;
+      color: white;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .contact-form button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .status {
+      margin-top: 15px;
+      font-weight: bold;
+      text-align: center;
+      color: green;
+    }
+
+    .limit-warning {
+      color: red;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Doctor Contact Portal</h2>
+  <form class="contact-form" onsubmit="return contactPatient()">
+    <input type="text" id="patientName" placeholder="Patient Name" required>
+    <input type="text" id="patientPhone" placeholder="Phone Number" required>
+    <button type="submit" id="contactButton">Contact Patient</button>
+  </form>
+  <div class="status" id="statusMessage"></div>
+  <div class="limit-warning" id="limitWarning"></div>
+</div>
+
+<script>
+  let contactedCount = 0;
+  const maxContacts = 10;
+
+  function contactPatient() {
+    if (contactedCount >= maxContacts) {
+      document.getElementById("limitWarning").innerText = "Maximum of 10 patients contacted!";
+      return false;
+    }
+
+    const name = document.getElementById("patientName").value;
+    const phone = document.getElementById("patientPhone").value;
+
+    if (name && phone) {
+      contactedCount++;
+      document.getElementById("statusMessage").innerText = `Contacted ${name} successfully. (${contactedCount}/10)`;
+
+      if (contactedCount === maxContacts) {
+        document.getElementById("contactButton").disabled = true;
+        document.getElementById("limitWarning").innerText = "You have reached the contact limit.";
+      }
+    }
+
+    document.getElementById("patientName").value = "";
+    document.getElementById("patientPhone").value = "";
+
+    return false; 
+  }
+</script>
+
+</body>
+</html>

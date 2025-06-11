@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Doctor Portal</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+    }
+
+    header {
+      background-color: #fdf5e6;
+      padding: 10px 0;
+    }
+
+    #ul1 {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 10px 0;
+    }
+
+    #ul1 li img {
+      width: 50px;
+    }
+
+    #ul1 li a {
+      text-decoration: none;
+      color: black;
+      padding: 10px 16px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    #ul1 li a:hover {
+      background-color: #fff;
+    }
+
+    .image-container {
+      position: relative;
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .image-container img {
+      width: 80%;
+      border-radius: 12px;
+    }
+
+    .form-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-overlay table {
+      width: 100%;
+    }
+
+    .form-overlay td {
+      padding: 10px;
+    }
+
+    .bottom-nav {
+      background-color: #a6e7ff;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .bottom-nav li {
+      list-style: none;
+    }
+
+    .bottom-nav a {
+      text-decoration: none;
+      color: black;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .bottom-nav img {
+      display: block;
+      margin: 0 auto 8px;
+      width: 30px;
+      height: 30px;
+    }
+
+    h2, h4 {
+      text-align: center;
+      margin: 20px 0 10px;
+    }
+
+    .scroll-container-wrapper {
+      position: relative;
+      overflow: hidden;
+      margin: 20px auto;
+      max-width: 90%;
+    }
+
+    .scroll-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 20px;
+      padding: 10px;
+    }
+
+    .speciality-item {
+      min-width: 140px;
+      text-align: center;
+      background: white;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .speciality-item img {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 5px;
+      border-radius: 10px;
+    }
+
+    .scroll-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0,0,0,0.3);
+      border: none;
+      color: white;
+      font-size: 24px;
+      padding: 8px 12px;
+      cursor: pointer;
+      z-index: 5;
+    }
+
+    .scroll-left {
+      left: 0;
+    }
+
+    .scroll-right {
+      right: 0;
+    }
+
+    .doctor {
+      background-color: #fdf5e6;
+      margin: 40px auto;
+      padding: 30px;
+      max-width: 800px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .doctor p {
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .image-container img {
+        width: 95%;
+      }
+
+      .form-overlay {
+        width: 90%;
+      }
+
+      .bottom-nav {
+        gap: 20px;
+      }
+
+      .scroll-container {
+        padding: 0 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <ul id="ul1">
+    <li><img src="bhg.jpg" alt="Logo"></li>
+    <li><a href="#find-doctor">Find Doctor</a></li>
+    <li><a href="vido.html">video consult</video></a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</header>
+
+<div class="image-container">
+  <img src="doctor.jpg" alt="Doctor Banner">
+  <div class="form-overlay">
+    <table>
+      <tr>
+        <td><label for="location">Location:</label></td>
+        <td>
+          <select id="location">
+            <option>Chennai</option>
+            <option>Bangalore</option>
+            <option>Mumbai</option>
+            <option>New Delhi</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="search">Search:</label></td>
+        <td>
+          <input type="search" id="search" placeholder="Search doctor...">
+          <button onclick="searchDoctor()">Go</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<ul class="bottom-nav">
+  <li><a href="#"><img src="message.jpg" alt="DoctorConsult"><div>DoctorConsult</div></a></li>
+  <li><a href="#"><img src="shopping.jpg" alt="Order Medicines"><div>Order Medicines</div></a></li>
+  <li><a href="#"><img src="records.jpg" alt="View Medicines"><div>View Medicines</div></a></li>
+  <li><a href="#"><img src="bag.jpg" alt="Healthcare"><div>For Healthcare Provider</div></a></li>
+</ul>
+
+<h2>Specialities</h2>
+<h4>Consult with top doctors across specialities</h4>
+
+<div class="scroll-container-wrapper">
+  <button class="scroll-button scroll-left" onclick="scrollLeft('specialitiesScroll')">&#8249;</button>
+  <div class="scroll-container" id="specialitiesScroll">
+    <div class="speciality-item"><img src="pre.jpg" alt="Gynaecology"><div>Gynaecology</div></div>
+    <div class="speciality-item"><img src="stomach.jpg" alt="Stomach"><div>Stomach</div></div>
+    <div class="speciality-item"><img src="kidney.jpg" alt="Kidney"><div>Kidney</div></div>
+    <div class="speciality-item"><img src="mental.jpg" alt="Psychiatry"><div>Psychiatry</div></div>
+    <div class="speciality-item"><img src="male.jpg" alt="Sexology"><div>Sexology</div></div>
+    <div class="speciality-item"><img src="Dermatology.jpg" alt="Dermatology"><div>Dermatology</div></div>
+    <div class="speciality-item"><img src="general.jpg" alt="Physician"><div>Physician</div></div>
+    <div class="speciality-item"><img src="baby.jpg" alt="Pediatrics"><div>Pediatrics</div></div>
+  </div>
+  <button class="scroll-button scroll-right" onclick="scrollRight('specialitiesScroll')">&#8250;</button>
+</div>
+
+<h2>Common Health Concerns</h2>
+<h4>Consult a doctor online for any health issue</h4>
+
+<div class="scroll-container-wrapper">
+  <button class="scroll-button scroll-left" onclick="scrollLeft('concernsScroll')">&#8249;</button>
+  <div class="scroll-container" id="concernsScroll">
+    <div class="speciality-item"><img src="stomach problem.jpg" alt="Stomach"><div>Stomach Problem</div></div>
+    <div class="speciality-item"><img src="kids.jpg" alt="Kids Sick"><div>Kids Sick</div></div>
+    <div class="speciality-item"><img src="skin.jpg" alt="Skin Issue"><div>Skin Issue</div></div>
+    <div class="speciality-item"><img src="period.jpg" alt="Period"><div>Period</div></div>
+    <div class="speciality-item"><img src="performance.jpg" alt="Performance"><div>Performance</div></div>
+    <div class="speciality-item"><img src="depression.jpg" alt="Depression"><div>Depression</div></div>
+    <div class="speciality-item"><img src="weight.jpg" alt="Weight"><div>Weight Loss</div></div>
+    <div class="speciality-item"><img src="woman.jpg" alt="Infections"><div>Infections</div></div>
+  </div>
+  <button class="scroll-button scroll-right" onclick="scrollRight('concernsScroll')">&#8250;</button>
+</div>
+
+<div class="doctor">
+  <h2>Consult Top Doctors</h2>
+  <p>Connect instantly with a 24x7 specialist or choose to video visit a particular doctor.</p>
+  <h2>Benefits of Online Consultation</h2>
+  <p>Be assured that your online consultation will be fully private and secured. Experience clinic-like consultation through a video call with the doctor. Get a valid digital prescription and a 7-day, free follow-up for further clarifications.</p>
+</div>
+
+<script>
+  function scrollLeft(id) {
+    document.getElementById(id).scrollBy({ left: -200, behavior: 'smooth' });
+  }
+
+  function scrollRight(id) {
+    document.getElementById(id).scrollBy({ left: 200, behavior: 'smooth' });
+  }
+
+  function searchDoctor() {
+    const location = document.getElementById('location').value;
+    const query = document.getElementById('search').value.trim();
+    if (query) {
+      alert(`Searching for: ${query} in ${location}`);
+    } else {
+      alert("Please enter a search term.");
+    }
+  }
+</script>
+
+</body>
+</html>
+ 
+
